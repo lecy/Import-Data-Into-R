@@ -1,0 +1,20 @@
+```{r}
+#Loading CSVs from Github into R
+#How to...
+dat.save.rain <- read.csv("https://raw.githubusercontent.com/subartle/hello-world/master/Save.the.Rain.1.csv"
+                    , sep = ","
+                    , header = TRUE)
+
+#Step 1: Access the Github Repository that is making the data available. 
+#Step 2: Click on the data you are interested in. 
+#Step 3: Three options should appear in the top right - "Raw", "Blame" and History. For csv files, click "Raw". It should take you to a seperate URL.
+#Step 4: Once redirected to the sepearte, comma seperated values view, copy the URL and paste it into the above code. 
+#Step 5. I've titled my dataframe "dat.save.rain". You will have a distinct name for your dataframes. 
+
+#A mistake you can make would be to not hit "Raw" and copy down an ineffective URL (see below)
+
+
+dat.wont.work <- read.csv("https://github.com/subartle/hello-world/blob/master/Save.the.Rain.1.csv"
+                    , sep = ","
+                    , header = TRUE)
+```
