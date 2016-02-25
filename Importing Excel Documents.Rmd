@@ -1,0 +1,67 @@
+---
+title: "Importing Excel Documents"
+author: "Rory Tikalsky"
+date: "February 25, 2016"
+output: html_document
+---
+
+#Importing Data From Excel
+
+##Copy & Pasting
+####You can copy paste columns of data into R from excel! This can save time if you don't want to worry about working directory or file paths.
+
+* ### Step 1
+###### Select rows of data in excel and ctrl+c them.
+![example](http://i.imgur.com/AguwQvC.png)
+
+* ### Step 2
+###### Assign a variable for where you want to paste the data, using the scan() function.
+```
+x <- scan()
+```
+
+* ### Step 3
+###### Ctrl+v to paste your data into R's console (the input area where you type commands).
+###### Hit enter to "end" the scan() function.
+
+
+------
+
+#### NOTES ABOUT SCAN() #
+##### -> Scan only works for numbers! 
+###### Copy pasting this:
+![example](http://i.imgur.com/X9dgRk8.png)
+
+###### Will return this: 
+Error in scan(file, what, nmax, sep, dec, quote, skip, nlines, na.strings,  : scan() expected 'a real', got 'test'
+
+------
+
+#Importing from .xlsx
+####This is for when you have an excel file (.xlsx) which is too big to copy paste or you're too lazy to save it as a .csv or other file type.
+
+* ### Step 1
+###### Make sure your working directory is set!
+```
+getwd()
+setwd("./Data")
+```
+
+* ### Step 2
+###### Install and call the package xlsx which you can use to import excel files.
+```
+install.packages("xlsx")
+library(xlsx)
+```
+
+
+* ### Step 3
+###### Read in your excel file using this one easy command.
+```
+dat <- read.xlsx(""./Data/RoryData.xlsx", sheetName="Sheet1")
+```
+
+### Notes About Read  .xlsx #
+#####  Make sure you include your sheet name or it won't work. By default in excel, the first sheet is "Sheet1" as used in the example above.
+
+
