@@ -4,8 +4,9 @@ In order to import data form diffrent versions of data manipulation software lik
 	
 Package can support only specified versions of each software. For stata it would be versions 5–12. default file format for Stata 13, format-115, is substantially different from those for Stata 5–12.
 	
-		### Stata uses similar command inputs as R, although more user friendly. In order to summarize data from a file, user would enter "summarize" on the command screen and hit enter. 
-		### In order to regress variables from the file, user would enter command: regress name.variable1 name.variable2
+Stata uses similar command inputs as R, although more user friendly. In order to summarize data from a file, user would enter "summarize" on the command screen and hit enter. 
+
+In order to regress variables from the file, user would enter command: regress name.variable1 name.variable2
 	
 ## Reading Stata files with read.dta function example
 	
