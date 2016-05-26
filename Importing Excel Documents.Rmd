@@ -1,67 +1,130 @@
 ---
 title: "Importing Excel Documents"
-author: "Rory Tikalsky"
-date: "February 25, 2016"
 output: html_document
 ---
 
-#Importing Data From Excel
+# Importing Data From Excel
 
-##Copy & Pasting
-####You can copy paste columns of data into R from excel! This can save time if you don't want to worry about working directory or file paths.
+## Copy & Pasting
 
-* ### Step 1
-###### Select rows of data in excel and ctrl+c them.
+You can copy paste columns of data into R from excel! This can save time if you don't want to worry about working directory or file paths.
+
+### Step 1
+
+Select rows of data in excel and ctrl+c them.
+
 ![example](http://i.imgur.com/AguwQvC.png)
 
-* ### Step 2
-###### Assign a variable for where you want to paste the data, using the scan() function.
+### Step 2
+
+Assign a variable for where you want to paste the data, using the scan() function.
+
 ```
 x <- scan()
 ```
 
-* ### Step 3
-###### Ctrl+v to paste your data into R's console (the input area where you type commands).
-###### Hit enter to "end" the scan() function.
+### Step 3
+
+Ctrl+v to paste your data into R's console (the input area where you type commands).
+
+Hit enter to "end" the scan() function.
+
+
+### ALTERNATIVELY
+
+If you would like to copy a full dataset, first copy from excel then try:
+
+```r
+
+dat <- read.csv("clipboard", sep="\t")
+
+# if you included names in the first row:
+names(dat) <- dat[1,]
+dat <- dat[-1,]
+
+```
+If you want to store this data in your script for future use (this is only recommended for small datasets, otherwise store as a separate csv file):
+
+```r
+dump( "dat", file = "clipboard" )
+```
+
+You can then paste the output into your R script and it will be easy to load next time you open the file. The output looks like this, but it will read in as a normal data frame.
+
+```r
+dat <- 
+structure(list(year = structure(1:6, .Label = c("1958", "1975", 
+"1985", "1995", "2005", "2015", "Number of citations per period"
+), class = "factor"), measurement = structure(c(1L, 2L, 5L, 6L, 
+3L, 4L), .Label = c("", "1367", "17582", "25728", "8253", "9685", 
+"Levels, trends and measurement"), class = "factor"), determinants = structure(c(1L, 
+1L, 5L, 3L, 2L, 4L), .Label = c("", "11975", "1534", "18665", 
+"336", "Determinants"), class = "factor"), outcomes = structure(c(1L, 
+2L, 6L, 3L, 4L, 5L), .Label = c("1517", "2160", "26580", "45446", 
+"69378", "7920", "Health outcomes"), class = "factor"), intervention = structure(c(1L, 
+1L, 1L, 1L, 2L, 3L), .Label = c("", "5922", "7209", "Interventions"
+), class = "factor"), `NA` = structure(c(1L, 1L, 1L, 2L, 3L, 
+4L), .Label = c("", "14287", "18584", "25716", "Policy"), class = "factor")), .Names = c("year", 
+"measurement", "determinants", "outcomes", "intervention", NA
+), row.names = 2:7, class = "data.frame")
+```
+
+Also see **dput()**.
+
 
 
 ------
 
-#### NOTES ABOUT SCAN() #
-##### -> Scan only works for numbers! 
-###### Copy pasting this:
+## NOTES ABOUT SCAN()
+
+* Scan only works for numbers! 
+
+Copy pasting this:
+
 ![example](http://i.imgur.com/X9dgRk8.png)
 
-###### Will return this: 
+Will return this: 
+
+```
 Error in scan(file, what, nmax, sep, dec, quote, skip, nlines, na.strings,  : scan() expected 'a real', got 'test'
+```
 
 ------
 
-#Importing from .xlsx
-####This is for when you have an excel file (.xlsx) which is too big to copy paste or you're too lazy to save it as a .csv or other file type.
+## Importing from .xlsx
 
-* ### Step 1
-###### Make sure your working directory is set!
+This is for when you have an excel file (.xlsx) which is too big to copy paste or you're too lazy to save it as a .csv or other file type.
+
+## Step 1 
+
+Make sure your working directory is set!
+
 ```
 getwd()
 setwd("./Data")
 ```
 
-* ### Step 2
-###### Install and call the package xlsx which you can use to import excel files.
+## Step 2 
+
+Install and call the package xlsx which you can use to import excel files.
+
 ```
 install.packages("xlsx")
 library(xlsx)
 ```
 
 
-* ### Step 3
-###### Read in your excel file using this one easy command.
+## Step 3
+
+Read in your excel file using this one easy command.
+
 ```
 dat <- read.xlsx(""./Data/RoryData.xlsx", sheetName="Sheet1")
 ```
 
-### Notes About Read  .xlsx #
-#####  Make sure you include your sheet name or it won't work. By default in excel, the first sheet is "Sheet1" as used in the example above.
+
+## Notes About Read  .xlsx #
+
+Make sure you include your sheet name or it won't work. By default in excel, the first sheet is "Sheet1" as used in the example above.
 
 
