@@ -52,21 +52,15 @@ dump( "dat", file = "clipboard" )
 You can then paste the output into your R script and it will be easy to load next time you open the file. The output looks like this, but it will read in as a normal data frame.
 
 ```r
-dat <- 
-structure(list(year = structure(1:6, .Label = c("1958", "1975", 
-"1985", "1995", "2005", "2015", "Number of citations per period"
-), class = "factor"), measurement = structure(c(1L, 2L, 5L, 6L, 
-3L, 4L), .Label = c("", "1367", "17582", "25728", "8253", "9685", 
-"Levels, trends and measurement"), class = "factor"), determinants = structure(c(1L, 
-1L, 5L, 3L, 2L, 4L), .Label = c("", "11975", "1534", "18665", 
-"336", "Determinants"), class = "factor"), outcomes = structure(c(1L, 
-2L, 6L, 3L, 4L, 5L), .Label = c("1517", "2160", "26580", "45446", 
-"69378", "7920", "Health outcomes"), class = "factor"), intervention = structure(c(1L, 
-1L, 1L, 1L, 2L, 3L), .Label = c("", "5922", "7209", "Interventions"
-), class = "factor"), `NA` = structure(c(1L, 1L, 1L, 2L, 3L, 
-4L), .Label = c("", "14287", "18584", "25716", "Policy"), class = "factor")), .Names = c("year", 
-"measurement", "determinants", "outcomes", "intervention", NA
-), row.names = 2:7, class = "data.frame")
+dat <-
+structure(list(year = c(1958L, 1975L, 1985L, 1995L, 2005L, 2015L
+), measurement = c(NA, 1367L, 8253L, 9685L, 17582L, 25728L), 
+    determinants = c(NA, NA, 336L, 1534L, 11975L, 18665L), outcomes = c(1517L, 
+    2160L, 7920L, 26580L, 45446L, 69378L), intervention = c(NA, 
+    NA, NA, NA, 5922L, 7209L), policy = c(NA, NA, NA, 14287L, 
+    18584L, 25716L)), .Names = c("year", "measurement", "determinants", 
+"outcomes", "intervention", "policy"), class = "data.frame", row.names = c(NA, 
+-6L))
 ```
 
 Also see **dput()**.
